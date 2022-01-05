@@ -1,3 +1,5 @@
+htmlcov
+.coveragerc
 venv
 .dockerignore
 Dockerfile
