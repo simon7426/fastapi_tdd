@@ -2,14 +2,15 @@ import logging
 import os
 from fastapi import FastAPI
 from tortoise.contrib.fastapi import register_tortoise
-from app.api.ping import router
+from app.api import ping, summaries
 from app.db import init_db
 
 log = logging.getLogger("uvicorn")
 
 def create_application() -> FastAPI:
     app = FastAPI()
-    app.include_router(router)
+    app.include_router(ping.router)
+    app.include_router(summaries.router, prefix="/summaries", tags=["summaries"])
 
     return app
 
